@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  sender:
+    image: openjdk:11-jre-slim
+    container_name: sender_dexentri_app
+    build:
+      context: ./sender
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    working_dir: /app
+    ports:
+      - "8080:8080"
+    # depends_on:
+    #   - senrec_mongodb
+
+  reciever:
+    image: openjdk:11-jre-slim
+    container_name: reciever_dexentri_app
+    build:
+      context: ./reciever
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    working_dir: /app
+    ports:
+      - "8081:8081"
+    # depends_on:
+    #   - senrec_mongodb
+
+
+  # senrec_mongodb:
+  #   image: mongo:latest
+  #   container_name: senrec_mongodb
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - mongo-data:/data/db
+
+volumes:
+  mongo-data:
