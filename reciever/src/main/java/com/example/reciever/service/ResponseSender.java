@@ -17,7 +17,7 @@ public class ResponseSender {
     }
 
     public void sendResponse(String message) {
-        String url = senderServiceUrl + "/completed";
+        String url = senderServiceUrl + "/task/completed";
         restTemplate.postForObject(url, message, String.class);
     }
 }
