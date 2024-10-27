@@ -1,11 +1,9 @@
 version: '3.8'
 services:
   sender:
-    image: openjdk:11-jre-slim
-    container_name: sender_dexentri_app
+    container_name: sender
     build:
       context: ./sender
-      dockerfile: Dockerfile
     environment:
       - SPRING_PROFILES_ACTIVE=dev
     working_dir: /app
@@ -15,11 +13,9 @@ services:
     #   - senrec_mongodb
 
   reciever:
-    image: openjdk:11-jre-slim
-    container_name: reciever_dexentri_app
+    container_name: reciever
     build:
       context: ./reciever
-      dockerfile: Dockerfile
     environment:
       - SPRING_PROFILES_ACTIVE=dev
     working_dir: /app

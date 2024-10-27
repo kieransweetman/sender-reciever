@@ -1,12 +1,8 @@
-# Stage 1: Build the application
-FROM maven:3.8.4-openjdk-11 AS build
+
+FROM maven:3.8.4-openjdk-11
+
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
-RUN mvn clean package -DskipTests
 
-# Stage 2: Run the application
-FROM openjdk:11-jre-slim
-WORKDIR /app
-COPY --from=build /app/target/sender-0.0.1-SNAPSHOT.jar .
-ENTRYPOINT ["java", "-jar", "sender-0.0.1-SNAPSHOT.jar"]
+CMD ["mvn", "spring-boot:run"]

@@ -39,13 +39,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.7.18</version>
 				<configuration>
 					<mainClass>com.example.sender.SenderApplication</mainClass>
 					<image>
 						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
 					</image>
 				</configuration>
-
 			</plugin>
 		</plugins>
 	</build>
